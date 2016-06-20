@@ -1,0 +1,21 @@
+<md-card>
+	<md-toolbar color="primary">
+		<h3> Usuarios: </h3>
+	</md-toolbar>
+	<md-list>
+		
+		<md-list-item *ngFor="let user of users">
+		<img md-list-avatar src="public/img/avatars/{{user.id}}.png">
+			<h3 md-line>{{user.name}}</h3>
+			<p md-line>
+				<span>{{user.username}}</span>
+				<span class="demo-2"> -- {{user.email}}</span>
+			</p>
+			<button md-icon-button>
+				<md-icon class="md-32">edit</md-icon>
+			</button>
+		</md-list-item>
+		
+	</md-list>
+
+</md-card>

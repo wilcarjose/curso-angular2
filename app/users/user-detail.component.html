@@ -1,0 +1,24 @@
+<md-card>
+	<md-toolbar color="primary">
+		<h3> Usuario: {{user.name}}</h3>
+	</md-toolbar>
+
+	<md-card-content *ngIf="user">		
+
+		<md-input [(ngModel)]="user.name" placeholder="Nombre">
+		</md-input>
+
+		<md-input [(ngModel)]="user.username" placeholder="Usuario">
+		</md-input>
+
+		<md-input [(ngModel)]="user.email" placeholder="Email">
+		</md-input>	
+
+	</md-card-content>
+
+	<md-card-actions>	
+		<button md-raised-button color="primary" (click)="guardar()">		Guardar
+		</button>
+	</md-card-actions>
+	
+</md-card>

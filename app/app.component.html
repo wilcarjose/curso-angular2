@@ -1,0 +1,31 @@
+
+<md-sidenav-layout fullscreen>
+
+	<md-sidenav #sidenav mode="side" class="app-sidenav">
+
+		<md-list>
+			<md-list-item>
+				<md-icon md-list-icon>face</md-icon>
+				<span md-line>Usuarios</span>
+				<a href="">Lista de Usuarios</a>
+			</md-list-item>
+			<md-list-item>
+				<md-icon md-list-icon>android</md-icon>
+				<span md-line>Android</span>
+				<a href="">Android</a>
+			</md-list-item>
+		</md-list>
+	</md-sidenav>
+	<md-toolbar color="primary"> 
+		<button class="app-icon-button" (click)="sidenav.toggle()">
+			<i class="material-icons app-toolbar-menu">menu</i>
+		</button>
+		<h3>{{ titulo }} en: {{ sitio }} </h3>
+	</md-toolbar>
+
+	<div class="app-content">
+		<user-detail [user]="user"></user-detail>
+
+		<user-list></user-list>
+	</div>
+</md-sidenav-layout>
