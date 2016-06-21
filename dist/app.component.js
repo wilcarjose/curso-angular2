@@ -18,12 +18,13 @@ var icon_1 = require('@angular2-material/icon');
 var button_1 = require('@angular2-material/button');
 var card_1 = require('@angular2-material/card');
 var input_1 = require('@angular2-material/input');
+var router_1 = require('@angular/router');
 var AppComponent = (function () {
     function AppComponent() {
         this.titulo = "Curso de Angular";
         this.sitio = "Anca";
         this.user = {
-            id: 1,
+            id: null,
             name: "Pedro Lopez",
             username: "plopez",
             email: "plopez@gmail.com"
@@ -42,7 +43,8 @@ var AppComponent = (function () {
                 button_1.MD_BUTTON_DIRECTIVES,
                 card_1.MD_CARD_DIRECTIVES,
                 input_1.MD_INPUT_DIRECTIVES,
-                list_1.MD_LIST_DIRECTIVES
+                list_1.MD_LIST_DIRECTIVES,
+                router_1.ROUTER_DIRECTIVES
             ],
             providers: [icon_1.MdIconRegistry]
         }), 

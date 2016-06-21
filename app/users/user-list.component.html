@@ -1,8 +1,14 @@
 <md-card>
 	<md-toolbar color="primary">
 		<h3> Usuarios: </h3>
+		<button md-icon-button (click)="nuevo()">
+			<md-icon class="md-32">add</md-icon>
+		</button>
+		<md-input placeholder="Buscar" (keyup)="buscar($event)">
+		</md-input>
 	</md-toolbar>
-	<md-list>
+
+	<md-list *ngIf="listo">
 		
 		<md-list-item *ngFor="let user of users">
 		<img md-list-avatar src="public/img/avatars/{{user.id}}.png">
@@ -11,11 +17,18 @@
 				<span>{{user.username}}</span>
 				<span class="demo-2"> -- {{user.email}}</span>
 			</p>
-			<button md-icon-button>
+			<button md-icon-button (click)="verUsuario(user)">
 				<md-icon class="md-32">edit</md-icon>
+			</button>
+			<button md-icon-button (click)="eliminar(user)">
+				<md-icon class="md-32">delete</md-icon>
 			</button>
 		</md-list-item>
 		
+	</md-list>
+
+	<md-list *ngIf="!listo">
+		<md-progress-circle mode="indeterminate"></md-progress-circle>
 	</md-list>
 
 </md-card>

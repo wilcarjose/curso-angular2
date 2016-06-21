@@ -1,7 +1,11 @@
 <md-card>
-	<md-toolbar color="primary">
+	<md-toolbar color="primary" *ngIf="user">
 		<h3> Usuario: {{user.name}}</h3>
 	</md-toolbar>
+
+	<md-list *ngIf="!listo">
+		<md-progress-circle mode="indeterminate"></md-progress-circle>
+	</md-list>
 
 	<md-card-content *ngIf="user">		
 
@@ -18,6 +22,8 @@
 
 	<md-card-actions>	
 		<button md-raised-button color="primary" (click)="guardar()">		Guardar
+		</button>
+		<button md-raised-button color="primary" (click)="listar()">		Listar
 		</button>
 	</md-card-actions>
 	

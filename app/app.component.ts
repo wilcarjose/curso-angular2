@@ -9,6 +9,7 @@ import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
 	selector: "my-app-anca",
@@ -22,7 +23,8 @@ import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 		MD_BUTTON_DIRECTIVES,
 		MD_CARD_DIRECTIVES,
 		MD_INPUT_DIRECTIVES,
-		MD_LIST_DIRECTIVES
+		MD_LIST_DIRECTIVES,
+		ROUTER_DIRECTIVES
 	],
 	providers: [MdIconRegistry]
 })
@@ -34,7 +36,7 @@ export class AppComponent {
 
 	
 	user: User = {
-		id: 1,
+		id: null,
 		name: "Pedro Lopez",
 		username: "plopez",
 		email: "plopez@gmail.com"

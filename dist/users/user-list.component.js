@@ -17,15 +17,61 @@ var icon_1 = require('@angular2-material/icon');
 var button_1 = require('@angular2-material/button');
 var card_1 = require('@angular2-material/card');
 var input_1 = require('@angular2-material/input');
+var router_1 = require('@angular/router');
+var progress_circle_1 = require('@angular2-material/progress-circle');
 var UserListComponent = (function () {
-    function UserListComponent(userService) {
+    function UserListComponent(userService, router) {
         this.userService = userService;
+        this.router = router;
+        this.listo = false;
     }
     UserListComponent.prototype.getUsers = function () {
-        this.users = this.userService.getUsers();
+        var _this = this;
+        this.listo = false;
+        this.userService
+            .getUsers()
+            .subscribe(function (users) {
+            _this.users = users;
+            _this.listo = true;
+        }, function (error) {
+            _this.error = error;
+            _this.listo = true;
+        });
+    };
+    UserListComponent.prototype.verUsuario = function (user) {
+        this.router.navigate(['/user', user.id]);
     };
     UserListComponent.prototype.ngOnInit = function () {
         this.getUsers();
+    };
+    UserListComponent.prototype.nuevo = function () {
+        this.router.navigate(['/user']);
+    };
+    UserListComponent.prototype.eliminar = function (user) {
+        var _this = this;
+        if (confirm("Esta seguro")) {
+            this.listo = false;
+            this.userService
+                .delete(user)
+                .subscribe(function (users) { return _this.getUsers(); }, function (error) { return _this.error = error; });
+        }
+    };
+    UserListComponent.prototype.buscar = function (event) {
+        var _this = this;
+        this.listo = false;
+        var key = event.target.value;
+        //console.log(key);
+        if (key == '') {
+            this.getUsers();
+        }
+        else {
+            this.userService
+                .getByUsername(key)
+                .subscribe(function (users) {
+                _this.users = users;
+                _this.listo = true;
+            }, function (error) { return _this.error = error; });
+        }
     };
     UserListComponent = __decorate([
         core_1.Component({
@@ -38,11 +84,12 @@ var UserListComponent = (function () {
                 button_1.MD_BUTTON_DIRECTIVES,
                 card_1.MD_CARD_DIRECTIVES,
                 input_1.MD_INPUT_DIRECTIVES,
-                list_1.MD_LIST_DIRECTIVES
+                list_1.MD_LIST_DIRECTIVES,
+                progress_circle_1.MD_PROGRESS_CIRCLE_DIRECTIVES
             ],
             providers: [user_service_1.UserService, icon_1.MdIconRegistry]
         }), 
-        __metadata('design:paramtypes', [user_service_1.UserService])
+        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
     ], UserListComponent);
     return UserListComponent;
 }());
